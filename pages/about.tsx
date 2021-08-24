@@ -34,13 +34,13 @@ const PersonCard: React.FC<IPersonCard> = ({
         />
       </div>
       <div className="flex gap-4 flex-col">
-        <p className="text-gray-800">{title}</p>
+        <p className="text-gray-300">{title}</p>
 
-        <h2 className="font-bold text-2xl">{name}</h2>
-        <p className="text-gray-800">{description}</p>
+        <h2 className="font-bold text-2xl text-white tracking-wider">{name}</h2>
+        <p className="text-gray-300 leading-relaxed">{description}</p>
         <div className="flex gap-3 items-center">
-          <AiOutlineMail className="text-gray-800" />
-          <a className="text-gray-800 hover:underline" href={`mailto:${mail}`}>
+          <AiOutlineMail className="text-gray-300" />
+          <a className="text-gray-300 hover:underline" href={`mailto:${mail}`}>
             {mail}
           </a>
         </div>
@@ -52,8 +52,10 @@ const PersonCard: React.FC<IPersonCard> = ({
 const about = ({}) => {
   return (
     <>
-      <div className="bg-blue-100 min-h-screen">
-        <h1 className="text-center text-5xl font-bold py-7">Vilka är vi?</h1>
+      <div className="gradient min-h-screen">
+        <h1 className="text-center text-5xl font-bold py-7 text-white">
+          Vilka är vi?
+        </h1>
         <div className="w-full flex items-center justify-center flex-wrap max-w-screen-2xl gap-8 mx-auto p-4">
           <PersonCard
             name="Martin Hansson"

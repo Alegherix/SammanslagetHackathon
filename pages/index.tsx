@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import Link from 'next/link';
 
 interface ISetChoice {
   setChoice: React.Dispatch<React.SetStateAction<Choice>>;
@@ -43,7 +44,7 @@ const HelpComponent: React.FC<ISetChoice> = ({ setChoice }) => {
         className="rounded-md border-2 border-white p-2 duration-150 hover:bg-[#ffffff33]"
         onClick={() => setChoice('Donate')}
       >
-        Donera Pengar
+        Se vad en gåva kan göra
       </button>
     </motion.div>
   );
@@ -62,7 +63,10 @@ const DonationComponent = () => {
         Tack för din gåva, du vill ju såklart veta vad som händer med din gåva
         när den kommit fram till oss.
       </motion.p>
-      <button className="choiceButton">Se vad gåvan gör</button>
+
+      <Link href="/unity">
+        <a className="choiceButton">Se vad gåvan gör</a>
+      </Link>
     </motion.div>
   );
 };
@@ -83,7 +87,7 @@ const Index = ({}) => {
 
   return (
     <>
-      <main className="w-screen h-screen bg-gradient-to-r from-ocean to-ocean_floor flex items-center justify-center flex-col gap-5">
+      <main className="w-screen h-screen gradient flex items-center justify-center flex-col gap-5">
         <AnimateSharedLayout>
           <motion.h1
             layout
@@ -97,10 +101,10 @@ const Index = ({}) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="w-full flex justify-between max-w-md mx-auto flex-col items-center gap-y-4 md:flex-row"
+                className="w-full flex justify-between max-w-lg mx-auto flex-col items-center gap-y-4 md:flex-row"
               >
                 <ActionButton
-                  text="Donera pengar"
+                  text="Se vad en gåva kan göra"
                   setChoice={setChoice}
                   choice="Donate"
                 />
