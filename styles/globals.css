@@ -16,3 +16,9 @@
 }
 
 @tailwind utilities;
+
+@layer components {
+  .choiceButton {
+    @apply border-2 rounded-md text-white p-4 duration-150 hover:bg-[#ffffff33] w-[fit-content];
+  }
+}
