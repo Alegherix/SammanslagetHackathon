@@ -12,6 +12,7 @@ module.exports = {
       colors: {
         ocean: '#1F2C65',
         ocean_floor: '#101329',
+        accent: '#15A2EF',
       },
     },
   },

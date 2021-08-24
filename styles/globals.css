@@ -23,7 +23,7 @@
   }
 
   .separator {
-    @apply h-[2px] w-full bg-white rounded-md;
+    @apply h-[2px] w-full bg-accent rounded-md;
   }
 
   .gradient {

@@ -28,11 +28,11 @@ const HelpComponent: React.FC<ISetChoice> = ({ setChoice }) => {
       <p>
         Läs mer om hur du kan engagera dig{' '}
         <a
-          className="hover:underline font-bold"
+          className="font-bold hover:underline "
           href="https://raddningsmissionen.se/engagera-dig
 "
         >
-          Här
+          Här.
         </a>
       </p>
       <div className="w-full flex items-center my-5">
@@ -59,13 +59,13 @@ const DonationComponent = () => {
       exit={{ opacity: 0 }}
       className="flex items-center flex-col gap-10"
     >
-      <motion.p className="text-gray-300 leading-relaxed text-2xl max-w-screen-sm px-2">
-        Tack för din gåva, du vill ju såklart veta vad som händer med din gåva
-        när den kommit fram till oss.
+      <motion.p className="text-gray-300 leading-relaxed text-xl max-w-screen-sm px-2">
+        Tack för att du väljer att donera, du vill ju såklart veta vad som
+        händer med din gåva när den kommit fram till oss.
       </motion.p>
 
       <Link href="/unity">
-        <a className="choiceButton">Se vad gåvan gör</a>
+        <a className="choiceButton">Se vad din gåva gör</a>
       </Link>
     </motion.div>
   );
@@ -91,9 +91,10 @@ const Index = ({}) => {
         <AnimateSharedLayout>
           <motion.h1
             layout
-            className="text-white text-3xl font-bold p-2 md:text-4xl lg:text-5xl text-center pt-8 mb-4"
+            className="text-white text-3xl font-bold p-2 md:text-4xl lg:text-5xl text-center pt-8 mb-4 leading-relaxed xl:mb-8"
           >
-            Små medel stora skillnader
+            Små medel <span className="border-b-4 border-[#15A2EF]">stora</span>{' '}
+            skillnader
           </motion.h1>
           <AnimatePresence onExitComplete={() => setChosen(true)}>
             {!choice && (

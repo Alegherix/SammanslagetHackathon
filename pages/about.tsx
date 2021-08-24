@@ -24,7 +24,7 @@ const PersonCard: React.FC<IPersonCard> = ({
     <div className="max-w-md">
       <div
         style={{ clipPath: 'polygon(30% 0, 100% 0, 100% 100%, 0 100%, 0 30%)' }}
-        className="w-[300px] h-[300px] relative mb-8  "
+        className="w-[300px] h-[300px] relative mb-6  "
       >
         <Image
           src={imgUrl}
@@ -33,14 +33,21 @@ const PersonCard: React.FC<IPersonCard> = ({
           objectFit="cover"
         />
       </div>
-      <div className="flex gap-4 flex-col">
-        <p className="text-gray-300">{title}</p>
+      <div className="flex gap-2 flex-col text-gray-300 ">
+        <p
+          style={{ textShadow: '#0d79b3 0px 1px 3px' }}
+          className="text-[#15A2EF]"
+        >
+          {title}
+        </p>
 
-        <h2 className="font-bold text-2xl text-white tracking-wider">{name}</h2>
-        <p className="text-gray-300 leading-relaxed">{description}</p>
-        <div className="flex gap-3 items-center">
-          <AiOutlineMail className="text-gray-300" />
-          <a className="text-gray-300 hover:underline" href={`mailto:${mail}`}>
+        <h2 className="font-bold text-2xl text-white tracking-wider mb-2">
+          {name}
+        </h2>
+        <p className="leading-relaxed">{description}</p>
+        <div className="flex gap-3 items-center text-[#15A2EF] text-sm">
+          <AiOutlineMail />
+          <a className="hover:underline tracking-wide " href={`mailto:${mail}`}>
             {mail}
           </a>
         </div>
@@ -56,7 +63,7 @@ const about = ({}) => {
         <h1 className="text-center text-5xl font-bold py-7 text-white">
           Vilka är vi?
         </h1>
-        <div className="w-full flex items-center justify-center flex-wrap max-w-screen-2xl gap-8 mx-auto p-4">
+        <div className="w-full flex items-center justify-center flex-wrap max-w-screen-2xl gap-12 mx-auto p-4">
           <PersonCard
             name="Martin Hansson"
             title="Webbutvecklare"
