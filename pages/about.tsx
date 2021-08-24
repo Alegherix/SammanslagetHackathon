@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import MartinImg from '../public/images/martin.jpg';
+import ChristerImg from '../public/images/christer.jpg';
+import NilsImg from '../public/images/nils.jpg';
 import { AiOutlineMail } from 'react-icons/ai';
 
 interface IPersonCard {
@@ -8,7 +10,7 @@ interface IPersonCard {
   name: string;
   mail: string;
   description: string;
-  imgUrl: string;
+  imgUrl: StaticImageData;
 }
 
 const PersonCard: React.FC<IPersonCard> = ({
@@ -16,6 +18,7 @@ const PersonCard: React.FC<IPersonCard> = ({
   name,
   mail,
   title,
+  imgUrl,
 }) => {
   return (
     <div className="max-w-md">
@@ -24,7 +27,7 @@ const PersonCard: React.FC<IPersonCard> = ({
         className="w-[300px] h-[300px] relative mb-8  "
       >
         <Image
-          src={MartinImg}
+          src={imgUrl}
           alt="image of Contributer"
           layout="fill"
           objectFit="cover"
@@ -37,7 +40,9 @@ const PersonCard: React.FC<IPersonCard> = ({
         <p className="text-gray-800">{description}</p>
         <div className="flex gap-3 items-center">
           <AiOutlineMail className="text-gray-800" />
-          <p className="text-gray-800">{mail}</p>
+          <a className="text-gray-800 hover:underline" href={`mailto:${mail}`}>
+            {mail}
+          </a>
         </div>
       </div>
     </div>
@@ -53,21 +58,21 @@ const about = ({}) => {
           <PersonCard
             name="Martin Hansson"
             title="Webbutvecklare"
-            imgUrl=""
+            imgUrl={MartinImg}
             mail="alegherix@gmail.com"
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium explicabo autem cumque voluptate! Nam, repellat? Accusamus totam dignissimos veritatis et. Laudantium quis aut doloribus sit, adipisci non hic provident illum tenetur, ex, ducimus impedit quae facere eum eveniet esse assumenda."
           />
           <PersonCard
-            name="Martin Hansson"
-            title="Webbutvecklare"
-            imgUrl=""
-            mail="alegherix@gmail.com"
+            name="Christer Högberg"
+            title="Game Creator Programmer"
+            imgUrl={ChristerImg}
+            mail="christersmail@gmail.com"
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium explicabo autem cumque voluptate! Nam, repellat? Accusamus totam dignissimos veritatis et. Laudantium quis aut doloribus sit, adipisci non hic provident illum tenetur, ex, ducimus impedit quae facere eum eveniet esse assumenda."
           />{' '}
           <PersonCard
-            name="Martin Hansson"
-            title="Webbutvecklare"
-            imgUrl=""
+            name="Nils Alatalo"
+            title="Manusförfattare"
+            imgUrl={NilsImg}
             mail="alegherix@gmail.com"
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium explicabo autem cumque voluptate! Nam, repellat? Accusamus totam dignissimos veritatis et. Laudantium quis aut doloribus sit, adipisci non hic provident illum tenetur, ex, ducimus impedit quae facere eum eveniet esse assumenda."
           />

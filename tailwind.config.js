@@ -9,6 +9,10 @@ module.exports = {
       fontFamily: {
         sans: ['Poppins', ...fontFamily.sans],
       },
+      colors: {
+        ocean: '#1F2C65',
+        ocean_floor: '#101329',
+      },
     },
   },
   variants: {
