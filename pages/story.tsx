@@ -17,7 +17,7 @@ export default function Story() {
   }, []);
 
   const moveCamera = () => {
-    unityContext.send('Main Camera', 'MoveCamera');
+    unityContext.send('Main Camera', 'NextSlide');
   };
 
   return (

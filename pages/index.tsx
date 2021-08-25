@@ -4,23 +4,24 @@ import Link from 'next/link';
 import Navbar from '../src/components/Navbar';
 
 interface ISetChoice {
-  setChoice: React.Dispatch<React.SetStateAction<Choice>>;
+  setHelp: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface IActionButton extends ISetChoice {
   text: string;
-  choice: Choice;
 }
 
-const HelpComponent: React.FC<ISetChoice> = ({ setChoice }) => {
+const HelpComponent: React.FC = () => {
   return (
     <motion.div
+      layout
       initial={{ opacity: 0 }}
-      transition={{ duration: 1.2 }}
+      transition={{ duration: 1.3 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="flex flex-col gap-3 text-gray-300 leading-relaxed text-xl max-w-screen-sm px-4"
+      className="flex flex-col gap-3 text-gray-300 leading-relaxed text-lg max-w-screen-sm px-4 mt-8"
     >
+      <div className="separator  mx-auto rounded-full my-2" />
       <p>
         Det är inte alltid som man har pengar över att skänka, vi förstår! Men
         det finns andra sätt du kan hjälpa till på, till exempel kan du bidra
@@ -36,55 +37,20 @@ const HelpComponent: React.FC<ISetChoice> = ({ setChoice }) => {
           Här
         </a>
       </p>
-      <div className="w-full flex items-center my-5">
-        <div className="separator" />
-        <p className="px-4">Eller</p>
-        <div className="separator" />
-      </div>
-      <button
-        className="rounded-md border-2 border-white p-2 duration-150 hover:bg-[#ffffff33]"
-        onClick={() => setChoice('Donate')}
-      >
-        Se vad en gåva kan göra
-      </button>
     </motion.div>
   );
 };
 
-const DonationComponent = () => {
+const ActionButton: React.FC<IActionButton> = ({ text, setHelp }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1.2 }}
-      exit={{ opacity: 0 }}
-      className="flex items-center flex-col gap-10"
-    >
-      <motion.p className="text-gray-300 leading-relaxed text-xl max-w-screen-sm px-2">
-        Tack för att du väljer att donera, du vill ju såklart veta vad som
-        händer med din gåva när den kommit fram till oss.
-      </motion.p>
-
-      <Link href="/story">
-        <a className="choiceButton">Se vad din gåva gör</a>
-      </Link>
-    </motion.div>
-  );
-};
-
-const ActionButton: React.FC<IActionButton> = ({ text, setChoice, choice }) => {
-  return (
-    <button className="choiceButton" onClick={() => setChoice(choice)}>
+    <button className={`choiceButton`} onClick={() => setHelp(true)}>
       {text}
     </button>
   );
 };
 
-type Choice = 'Donate' | 'Help';
-
 const Index = ({}) => {
-  const [choice, setChoice] = useState<Choice>();
-  const [chosen, setChosen] = useState<boolean>();
+  const [help, setHelp] = useState<boolean>(false);
 
   return (
     <>
@@ -93,37 +59,50 @@ const Index = ({}) => {
         <AnimateSharedLayout>
           <motion.h1
             layout
-            className="text-white text-3xl font-bold p-2 md:text-4xl lg:text-5xl text-center pt-8 mb-4 leading-relaxed xl:mb-8"
+            className="text-white text-3xl font-bold p-2 md:text-4xl lg:text-5xl text-center pt-8 mb-4 leading-relaxed xl:mb-4"
           >
-            Små medel <span className="border-b-4 border-[#15A2EF]">stora</span>{' '}
+            Små summor{' '}
+            <span className="border-b-4 border-[#15A2EF]">stora</span>{' '}
             skillnader
           </motion.h1>
-          <AnimatePresence onExitComplete={() => setChosen(true)}>
-            {!choice && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="w-full flex justify-between max-w-lg mx-auto flex-col items-center gap-y-4 md:flex-row"
-              >
-                <ActionButton
-                  text="Se vad en gåva kan göra"
-                  setChoice={setChoice}
-                  choice="Donate"
-                />
+
+          <motion.p
+            layout
+            className="text-gray-300 mx-auto max-w-screen-sm text-lg leading-relaxed mb-8"
+          >
+            Säg att du skänker en gåva till Räddningsmissionen. Tack!
+            <br />
+            Men ... du vill ju såklart veta vad som händer med dina pengar sen.{' '}
+            <br />
+            Här kan du se allt som din gåva hjälper till med under en dag.
+          </motion.p>
+
+          <AnimatePresence>
+            <motion.div
+              layout
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="w-full flex justify-between max-w-xl mx-auto flex-col items-center gap-y-4 md:flex-row"
+            >
+              <Link href="/story" passHref>
+                <motion.button
+                  layout
+                  className={`choiceButton mx-auto ${help && 'w-full '}`}
+                  transition={{ duration: 0.2 }}
+                >
+                  Se vad en gåva kan göra
+                </motion.button>
+              </Link>
+              {!help && (
                 <ActionButton
                   text="Hjälp till på andra sätt"
-                  setChoice={setChoice}
-                  choice="Help"
+                  setHelp={setHelp}
                 />
-              </motion.div>
-            )}
+              )}
+            </motion.div>
+            {help && <HelpComponent />}
           </AnimatePresence>
-
-          {chosen && choice === 'Help' && (
-            <HelpComponent setChoice={setChoice} />
-          )}
-          {chosen && choice === 'Donate' && <DonationComponent />}
         </AnimateSharedLayout>
       </main>
     </>
