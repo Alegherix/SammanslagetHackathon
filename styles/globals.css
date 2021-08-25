@@ -31,6 +31,6 @@
   }
 
   .movingUnderline {
-    @apply relative font-bold border-accent hover:before:w-full before:border-b-2 before:border-accent before:w-0 before:py-2 before:duration-300 before:absolute before:left-0 before:top-3 overflow-hidden;
+    @apply relative font-bold hover:before:w-full before:border-b-2 before:border-accent before:w-[0px] before:py-2 before:duration-300 before:absolute before:-left-0 before:top-3 overflow-hidden;
   }
 }
