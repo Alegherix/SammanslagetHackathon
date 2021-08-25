@@ -61,8 +61,7 @@ const Index = ({}) => {
             layout
             className="text-white text-3xl font-bold p-2 md:text-4xl lg:text-5xl text-center pt-8 mb-4 leading-relaxed xl:mb-4"
           >
-            Små summor{' '}
-            <span className="border-b-4 border-[#15A2EF]">stora</span>{' '}
+            Små summor <span className="border-b-4 border-accent">stora</span>{' '}
             skillnader
           </motion.h1>
 

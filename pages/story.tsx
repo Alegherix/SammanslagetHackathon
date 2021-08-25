@@ -16,9 +16,12 @@ interface IStory {
 
 const StoryText: React.FC<IStory> = ({ text }) => {
   return (
-    <div className="flex flex-col absolute top-0 max-w-screen-md">
+    <div className="flex flex-col absolute top-[20%] max-w-screen-sm right-[10%]">
       <p>{text}</p>
-      <button className="border-2 rounded-md p-2 w-[fit-content]">
+      <button
+        onClick={() => unityContext.send('Main Camera', 'NextSlide')}
+        className="rounded-md p-2 w-[fit-content] border-2 border-black text-black duration-200 hover:bg-gray-200 self-end"
+      >
         Hur hjälper min gåva?
       </button>
     </div>
@@ -30,6 +33,9 @@ export default function Story() {
 
   useEffect(() => {
     unityContext.on('loaded', () => setIsLoaded(true));
+    if (isLoaded) {
+      unityContext.setFullscreen(true);
+    }
   }, []);
 
   const moveCamera = () => {
@@ -39,14 +45,15 @@ export default function Story() {
   return (
     <div className="relative gradient">
       <StoryText text={story[0].text} />
-      {/* <button
+      <button
         onClick={moveCamera}
         className="rounded-full border-2 border-white p-2 absolute right-5 top-[50%] hover:border-black duration-300"
       >
         <FaChevronRight />
-      </button> */}
+      </button>
       <Unity
-        className="h-screen w-screen gradient"
+        style={{ background: 'red' }}
+        className="w-[600px] h-[600px] "
         unityContext={unityContext}
       />
     </div>
