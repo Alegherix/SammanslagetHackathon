@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import Link from 'next/link';
+import Navbar from '../src/components/Navbar';
 
 interface ISetChoice {
   setChoice: React.Dispatch<React.SetStateAction<Choice>>;
@@ -28,11 +29,11 @@ const HelpComponent: React.FC<ISetChoice> = ({ setChoice }) => {
       <p>
         Läs mer om hur du kan engagera dig{' '}
         <a
-          className="font-bold hover:underline "
+          className="movingUnderline"
           href="https://raddningsmissionen.se/engagera-dig
 "
         >
-          Här.
+          Här
         </a>
       </p>
       <div className="w-full flex items-center my-5">
@@ -64,7 +65,7 @@ const DonationComponent = () => {
         händer med din gåva när den kommit fram till oss.
       </motion.p>
 
-      <Link href="/unity">
+      <Link href="/story">
         <a className="choiceButton">Se vad din gåva gör</a>
       </Link>
     </motion.div>
@@ -87,7 +88,8 @@ const Index = ({}) => {
 
   return (
     <>
-      <main className="w-screen h-screen gradient flex items-center justify-center flex-col gap-5">
+      <Navbar />
+      <main className="min-h-screen gradient flex items-center justify-center flex-col gap-5">
         <AnimateSharedLayout>
           <motion.h1
             layout

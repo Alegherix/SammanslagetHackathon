@@ -9,7 +9,7 @@ const unityContext = new UnityContext({
   codeUrl: './Build/Sammanslaget Builds.wasm',
 });
 
-export default function Home() {
+export default function Story() {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   useEffect(() => {
