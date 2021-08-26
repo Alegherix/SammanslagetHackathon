@@ -17,7 +17,7 @@ interface IStory {
 
 const StoryText: React.FC<IStory> = ({ text }) => {
   return (
-    <div className="flex flex-col absolute top-[20%] max-w-screen-sm right-[10%]">
+    <div className="flex flex-col absolute top-[10%] max-w-screen-sm right-[10%]">
       <p>{text}</p>
       <button
         onClick={() => unityContext.send('Main Camera', 'NextSlide')}
@@ -34,7 +34,7 @@ const Overlay = ({ setOverlay }) => {
     <div className="absolute inset-0 gradient w-screen h-screen flex items-center justify-center z-20">
       <motion.div
         animate={{ rotate: 360, scale: 3 }}
-        transition={{ duration: 2.3 }}
+        transition={{ duration: 2.5 }}
         onAnimationComplete={() => setOverlay(false)}
       >
         <FaHeart className="text-5xl text-red-500" />
