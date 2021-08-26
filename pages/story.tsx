@@ -62,32 +62,19 @@ const Overlay = ({ setOverlay }) => {
 };
 
 export default function Story() {
-  const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [overlay, setOverlay] = useState<boolean>();
 
   useEffect(() => {
-    unityContext.on('loaded', () => setIsLoaded(true));
     setOverlay(true);
   }, []);
-
-  const moveCamera = () => {
-    unityContext.send('Main Camera', 'NextSlide');
-  };
 
   return (
     <>
       {overlay && <Overlay setOverlay={setOverlay} />}
       <div className="relative gradient">
-        <StoryText text={story[0].text} />
-        <button
-          onClick={moveCamera}
-          className="rounded-full border-2 border-white p-2 absolute right-5 top-[50%] hover:border-black duration-300"
-        >
-          <FaChevronRight />
-        </button>
         <Unity
           style={{ background: 'red' }}
-          className="w-screen h-screen "
+          className="w-screen h-screen"
           unityContext={unityContext}
         />
       </div>

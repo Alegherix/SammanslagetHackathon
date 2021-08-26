@@ -57,7 +57,7 @@ const about = ({}) => {
         </h1>
         <div className="separator mx-auto max-w-[150px] mt-2 mb-7 h-1" />
 
-        <div className="w-full flex justify-center flex-wrap max-w-screen-2xl gap-12 mx-auto p-4 pb-8">
+        <div className="w-full flex  flex-wrap gap-12 p-4 pb-8 justify-center mx-auto">
           {persons.map((person) => (
             <PersonCard key={person.name} {...person} />
           ))}

@@ -30,7 +30,7 @@ const HelpComponent: React.FC = () => {
       <p>
         Läs mer om hur du kan engagera dig{' '}
         <a
-          className="movingUnderline"
+          className="font-bold border-b-2 border-red-500"
           href="https://raddningsmissionen.se/engagera-dig
 "
         >
