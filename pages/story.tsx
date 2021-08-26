@@ -31,15 +31,33 @@ const StoryText: React.FC<IStory> = ({ text }) => {
 
 const Overlay = ({ setOverlay }) => {
   return (
-    <div className="absolute inset-0 gradient w-screen h-screen flex items-center justify-center z-20">
+    <motion.div
+      key="headingContainer"
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="absolute inset-0 gradient w-screen h-screen flex flex-col gap-4 items-center justify-center z-20"
+    >
+      <div>
+        <h1 className="text-7xl text-[#E07D41] leading-relaxed">
+          Räddnings<span className="text-white">missionen</span>
+        </h1>
+        <h2 className="text-5xl text-white text-center">Presenterar</h2>
+      </div>
+
       <motion.div
-        animate={{ rotate: 360, scale: 3 }}
-        transition={{ duration: 2.5 }}
+        key="sumContainer"
+        initial={{ opacity: 0 }}
+        transition={{ duration: 4 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0, x: -100 }}
         onAnimationComplete={() => setOverlay(false)}
       >
-        <FaHeart className="text-5xl text-red-500" />
+        <p key="sumText" className="text-white text-lg">
+          Små summor stora skillnader
+        </p>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 
