@@ -26,8 +26,8 @@ const PersonCard: React.FC<IPerson> = ({
       </div>
       <div className="flex gap-2 flex-col text-gray-300 ">
         <p
-          style={{ textShadow: '#0d79b3 0px 1px 3px' }}
-          className="text-[#15A2EF]"
+          style={{ textShadow: '#ec1313 0px 1px 3px' }}
+          className="text-accent"
         >
           {title}
         </p>
@@ -36,7 +36,7 @@ const PersonCard: React.FC<IPerson> = ({
           {name}
         </h2>
         <p className="leading-relaxed">{description}</p>
-        <div className="flex gap-3 items-center text-[#15A2EF] text-sm">
+        <div className="flex gap-3 items-center text-accent text-sm">
           <AiOutlineMail />
           <a className="hover:underline tracking-wide " href={`mailto:${mail}`}>
             {mail}
@@ -52,7 +52,7 @@ const about = ({}) => {
     <>
       <Navbar />
       <main className="gradient min-h-screen">
-        <h1 className="text-center text-5xl font-bold pt-7 text-white ">
+        <h1 className="text-center text-5xl font-bold text-white pt-12">
           Vilka är vi?
         </h1>
         <div className="separator mx-auto max-w-[150px] mt-2 mb-7 h-1" />

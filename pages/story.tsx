@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Unity, { UnityContext } from 'react-unity-webgl';
-import { FaChevronRight, FaHeart } from 'react-icons/fa';
-import story from '../src/data';
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const unityContext = new UnityContext({
   loaderUrl: './Build/Sammanslaget Builds.loader.js',
@@ -10,24 +8,6 @@ const unityContext = new UnityContext({
   frameworkUrl: './Build/Sammanslaget Builds.framework.js',
   codeUrl: './Build/Sammanslaget Builds.wasm',
 });
-
-interface IStory {
-  text: string;
-}
-
-const StoryText: React.FC<IStory> = ({ text }) => {
-  return (
-    <div className="flex flex-col absolute top-[10%] max-w-screen-sm right-[10%]">
-      <p>{text}</p>
-      <button
-        onClick={() => unityContext.send('Main Camera', 'NextSlide')}
-        className="rounded-md p-2 w-[fit-content] border-2 border-black text-black duration-200 hover:bg-gray-200 self-end"
-      >
-        Hur hjälper min gåva?
-      </button>
-    </div>
-  );
-};
 
 const Overlay = ({ setOverlay }) => {
   return (
@@ -66,17 +46,28 @@ export default function Story() {
 
   useEffect(() => {
     setOverlay(true);
+    unityContext.on('Custom', () => {
+      console.log('REEE');
+    });
+
+    unityContext.on('error', () => {
+      console.log('ERROR');
+    });
+
+    unityContext.on('quitted', () => {
+      console.log('QUITTTTTTED');
+    });
+
+    unityContext.on('canvas', () => console.log('FOOOKING QUITTED mATE'));
+
+    unityContext.on('loaded', () => console.log('LOOOADED'));
   }, []);
 
   return (
     <>
       {overlay && <Overlay setOverlay={setOverlay} />}
       <div className="relative gradient">
-        <Unity
-          style={{ background: 'red' }}
-          className="w-screen h-screen"
-          unityContext={unityContext}
-        />
+        <Unity className="h-screen w-screen" unityContext={unityContext} />
       </div>
     </>
   );

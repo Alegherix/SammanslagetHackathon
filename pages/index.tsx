@@ -19,9 +19,9 @@ const HelpComponent: React.FC = () => {
       transition={{ duration: 1.3 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="flex flex-col gap-3 text-gray-300 leading-relaxed text-lg max-w-screen-sm px-4 mt-8"
+      className="flex flex-col gap-3 text-gray-300 leading-relaxed lg:text-lg max-w-screen-sm px-4 mt-8"
     >
-      <div className="separator  mx-auto rounded-full my-2" />
+      <div className="separator mx-auto rounded-full my-2" />
       <p>
         Det är inte alltid som man har pengar över att skänka, vi förstår! Men
         det finns andra sätt du kan hjälpa till på, till exempel kan du bidra
@@ -67,7 +67,7 @@ const Index = ({}) => {
 
           <motion.p
             layout
-            className="text-gray-300 mx-auto max-w-screen-sm text-lg leading-relaxed mb-8"
+            className="text-gray-300 mx-auto max-w-screen-sm md:text-lg leading-relaxed mb-8 px-4 "
           >
             Säg att du skänker en gåva till Räddningsmissionen. Tack!
             <br />
@@ -76,32 +76,27 @@ const Index = ({}) => {
             Här kan du se allt som din gåva hjälper till med under en dag.
           </motion.p>
 
-          <AnimatePresence>
-            <motion.div
-              layout
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="w-full flex justify-between max-w-xl mx-auto flex-col items-center gap-y-4 md:flex-row"
-            >
-              <Link href="/story" passHref>
-                <motion.button
-                  layout
-                  className={`choiceButton mx-auto ${help && 'w-full '}`}
-                  transition={{ duration: 0.2 }}
-                >
-                  Se vad en gåva kan göra
-                </motion.button>
-              </Link>
-              {!help && (
-                <ActionButton
-                  text="Hjälp till på andra sätt"
-                  setHelp={setHelp}
-                />
-              )}
-            </motion.div>
-            {help && <HelpComponent />}
-          </AnimatePresence>
+          <motion.div
+            layout
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="w-full flex justify-between max-w-xl mx-auto flex-col items-center gap-y-4 md:flex-row px-4 md:px-0 "
+          >
+            <Link href="/story" passHref>
+              <motion.button
+                layout
+                className={`choiceButton mx-auto  ${help && 'w-full'}`}
+                transition={{ duration: 0.2 }}
+              >
+                Se vad en gåva kan göra
+              </motion.button>
+            </Link>
+            {!help && (
+              <ActionButton text="Hjälp till på andra sätt" setHelp={setHelp} />
+            )}
+          </motion.div>
+          {help && <HelpComponent />}
         </AnimateSharedLayout>
       </main>
     </>
