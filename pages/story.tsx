@@ -12,14 +12,18 @@ const unityContext = new UnityContext({
 });
 
 interface IData {
-  page: number;
   text: string;
 }
 
 const data: IData[] = [
   {
-    page: 1,
     text: 'En macka kostar enbart 20kr',
+  },
+  {
+    text: 'Hemlöshet är en jobbig grej',
+  },
+  {
+    text: 'En del av din donation går till stöd och rådgivning',
   },
 ];
 
@@ -76,9 +80,14 @@ const InfoCol = ({ msg, setActivePopup, active }) => {
         />
       )}
       {active && (
-        <div className="rounded-md p-4 max-w-sm bg-gray-300">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="rounded-md p-4 max-w-sm bg-gray-300"
+        >
           <p>{msg}</p>
-        </div>
+        </motion.div>
       )}
     </div>
   );
@@ -86,7 +95,7 @@ const InfoCol = ({ msg, setActivePopup, active }) => {
 
 export default function Story() {
   const [overlay, setOverlay] = useState<boolean>();
-  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>();
   const [activePopup, setActivePopup] = useState<boolean>();
 
   const router = useRouter();
@@ -97,6 +106,8 @@ export default function Story() {
     unityContext.on('TheEnd', () => router.push('/donate'));
 
     unityContext.on('PageNumber', (number) => {
+      console.log(number);
+
       setCurrentPage(number);
       setActivePopup(false);
     });
@@ -106,11 +117,13 @@ export default function Story() {
     <>
       {overlay && <Overlay setOverlay={setOverlay} />}
       <div className="relative gradient">
-        <InfoCol
-          msg={data[currentPage].text}
-          setActivePopup={setActivePopup}
-          active={activePopup}
-        />
+        {data?.[currentPage]?.text && (
+          <InfoCol
+            msg={data[currentPage].text}
+            setActivePopup={setActivePopup}
+            active={activePopup}
+          />
+        )}
         <Unity className="h-screen w-screen" unityContext={unityContext} />
       </div>
     </>
