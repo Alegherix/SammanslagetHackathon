@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../src/components/Navbar';
 import Image from 'next/image';
 import girl from '../public/images/raddningsmissionen.png';
 import CustomI from '../src/components/CustomI';
@@ -8,7 +7,6 @@ const Donate: React.FC = ({}) => {
   return (
     <>
       <main className="min-h-screen gradient flex items-center justify-center flex-col ">
-        <Navbar />
         <h1 className="text-white text-3xl font-bold p-2 md:text-4xl lg:text-5xl text-center  leading-relaxed mb-2 mt-6">
           Gåvan som verkl
           <CustomI />

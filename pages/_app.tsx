@@ -1,14 +1,12 @@
-import { motion, AnimatePresence } from 'framer-motion';
 import React from 'react';
+import Layout from '../src/components/Layout';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps, router }) {
   return (
-    <AnimatePresence>
-      {/* <motion.div key={router.route} exit={{ opacity: 0 }}> */}
+    <Layout>
       <Component {...pageProps} />
-      {/* </motion.div> */}
-    </AnimatePresence>
+    </Layout>
   );
 }
 

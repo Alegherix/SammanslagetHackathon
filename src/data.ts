@@ -24,9 +24,9 @@ export const persons: IPerson[] = [
     title: 'Game Creator Programmer',
     name: 'Christer Högberg',
     imgUrl: ChristerImg,
-    mail: 'mail...',
+    mail: 'chrhog2001@skola.goteborg.se',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium explicabo autem cumque voluptate! Nam, repellat? Accusamus totam dignissimos veritatis et. Laudantium quis aut doloribus sit, adipisci non hic provident illum tenetur, ex, ducimus impedit quae facere eum eveniet esse assumenda.',
+      'Christer studerar Game Creator Programmer vid Yrgo. Han har varit ansvarig för att se till att implementera de grafiska delarna in till spelet, samt sett till att utveckla den interaktiva spelmilön. Utöver det har Christer även varit ansvarig för att se till att kommunikationen mellan spelmiljön och hemsidan har fungerat.',
   },
   {
     title: 'Manusförfattare',
@@ -40,7 +40,7 @@ export const persons: IPerson[] = [
     title: 'Game Creator Artist',
     name: 'Isak Alfredsson',
     imgUrl: IsakImg,
-    mail: 'mail...',
+    mail: 'isak.alf.reds@gmail.com',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium explicabo autem cumque voluptate! Nam, repellat? Accusamus totam dignissimos veritatis et. Laudantium quis aut doloribus sit, adipisci non hic provident illum tenetur, ex, ducimus impedit quae facere eum eveniet esse assumenda.',
   },

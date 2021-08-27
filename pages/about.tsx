@@ -50,18 +50,20 @@ const PersonCard: React.FC<IPerson> = ({
 const about = ({}) => {
   return (
     <>
-      <Navbar />
-      <main className="gradient min-h-screen">
+      <main className="gradient min-h-screen flex flex-col">
         <h1 className="text-center text-5xl font-bold text-white pt-12">
           Vilka är vi?
         </h1>
         <div className="separator mx-auto max-w-[150px] mt-2 mb-7 h-1" />
 
-        <div className="w-full flex  flex-wrap gap-12 p-4 pb-8 justify-center mx-auto">
+        <div className="w-full flex  flex-wrap gap-12 p-4 pb-8 justify-center mx-auto flex-1">
           {persons.map((person) => (
             <PersonCard key={person.name} {...person} />
           ))}
         </div>
+        <footer className="text-gray-300 bg-white w-full h-20 bg-opacity-5 flex items-center justify-center mt-2">
+          <a href="https://www.yrgo.se">Yrgo &copy; 2021</a>
+        </footer>
       </main>
     </>
   );

@@ -54,7 +54,6 @@ const Index = ({}) => {
 
   return (
     <>
-      <Navbar />
       <main className="min-h-screen gradient flex items-center justify-center flex-col gap-5">
         <AnimateSharedLayout>
           <motion.h1
@@ -92,6 +91,7 @@ const Index = ({}) => {
                 Se vad en gåva kan göra
               </motion.button>
             </Link>
+
             {!help && (
               <ActionButton text="Hjälp till på andra sätt" setHelp={setHelp} />
             )}
