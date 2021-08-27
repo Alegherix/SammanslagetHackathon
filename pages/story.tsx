@@ -17,13 +17,19 @@ interface IData {
 
 const data: IData[] = [
   {
-    text: 'En macka kostar enbart 20kr',
+    text: 'Genom donationer från livsmedelsbranschen tar vi hand om matsvinn på ett ekologiskt sätt',
   },
   {
-    text: 'Hemlöshet är en jobbig grej',
+    text: 'Sammanlagt driver vi SJU olika boende-program, bara i Göteborg',
   },
   {
     text: 'En del av din donation går till stöd och rådgivning',
+  },
+  {
+    text: 'Cirka 3 700 personer i Göteborg kan räknas som hemlösa',
+  },
+  {
+    text: 'Varje år kan man självklart också fira julafton på 35:an!',
   },
 ];
 
